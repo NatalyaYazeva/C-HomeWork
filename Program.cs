@@ -31,7 +31,8 @@ Console.Write("max = ");
 Console.WriteLine(max);*/
 
 //Зад.3: на вход принимает число и выдаёт, является ли число чётным (делится ли оно на два без остатка).
-Console.WriteLine("введи число");
+
+/*Console.WriteLine("введи число");
 int a = int.Parse(Console.ReadLine()!);
 if (a%2==0)
 {
@@ -40,4 +41,23 @@ if (a%2==0)
 else
 {
     Console.WriteLine("Нечетное");
+}*/
+
+//Зад.4: на вход принимает число (N), а на выходе показывает все чётные числа от 1 до N.
+
+Console.WriteLine("введи число");
+int number = int.Parse(Console.ReadLine()!);
+int number1=2;
+
+while(number1<=number)
+{
+    if(number1%2==0)
+    {
+        Console.Write($"{number1} ");
+        number1++;
+    }
+    else
+    {
+        number1++;
+    }
 }
