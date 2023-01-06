@@ -66,7 +66,7 @@ while(number1<=number)
 /*Задача 1: Напишите программу, которая принимает на вход трёхзначное число и на выходе показывает вторую цифру этого числа.
 Обязательна проверка на ввод чисел больше/меньше 3-х знаков*/
 
-Console.WriteLine("введи трехзначное число");
+/*Console.WriteLine("введи трехзначное число");
 int num = int.Parse(Console.ReadLine()!);
 if((num>=100) && (num<1000))
 {
@@ -75,11 +75,11 @@ if((num>=100) && (num<1000))
 else
 {
     Console.WriteLine($"{num} не является трехзначным числом");
-}
+}*/
 
 /*Задача 2. Напишите программу, которая выводит третью цифру заданного числа или сообщает, что третьей цифры нет. Берем числа до 100000*/
 
-Console.WriteLine("введи число от 0 до 100 000");
+/*Console.WriteLine("введи число от 0 до 100 000");
 int number = int.Parse(Console.ReadLine()!);
 if((number>=0) && (number<100))
 {
@@ -109,12 +109,12 @@ else
             }
         }
     }
-}
+}*/
 
 //Задача 3: Напишите программу, которая принимает на вход цифру, обозначающую день недели, и проверяет, является ли этот день выходным.
 // Обязательна проверка на ввод числа <1 и >7
 
-Console.WriteLine("введи число от 1 до 7");
+/*Console.WriteLine("введи число от 1 до 7");
 int n = int.Parse(Console.ReadLine()!);
 if ((n==0) || (n>7))
 {
@@ -130,4 +130,52 @@ else
     {
         Console.WriteLine("нет");
     }
+}*/
+
+//ДЗ №3
+//Задача 1: принимает на вход пятизначное число и проверяет, является ли оно палиндромом.
+
+/*Console.Write("введи 5-тизначное число: ");
+int n = int.Parse(Console.ReadLine()!);
+string N = n.ToString();
+if (N.Length == 5)
+{
+    if (N[0]==N[4] && N[1]==N[3])
+    {
+        Console.WriteLine($"число {n} является палиндромом");
+    }
+    else
+    {
+        Console.WriteLine($"число {n} не является палиндромом");
+    }
+}
+else
+{
+    Console.WriteLine($"введено не верное число");
+}*/
+
+//принимает на вход координаты двух точек и находит расстояние между ними в 3D пространстве
+
+/*Console.Write("введи X1: ");
+int X1 = int.Parse(Console.ReadLine()!);
+Console.Write("введи Y1: ");
+int Y1 = int.Parse(Console.ReadLine()!);
+Console.Write("введи Z1: ");
+int Z1 = int.Parse(Console.ReadLine()!);
+Console.Write("введи X2: ");
+int X2 = int.Parse(Console.ReadLine()!);
+Console.Write("введи Y2: ");
+int Y2 = int.Parse(Console.ReadLine()!);
+Console.Write("введи Z2: ");
+int Z2 = int.Parse(Console.ReadLine()!);
+
+double res =Math.Sqrt(Math.Pow(X2-X1,2)+Math.Pow(Y2-Y1,2)+Math.Pow(Z2-Z1,2));
+Console.WriteLine($"расстояние между точками: {res:f2}");*/
+
+//принимает на вход число (N) и выдаёт таблицу кубов чисел от 1 до N.
+
+Console.Write("введи число: ");
+int n = int.Parse(Console.ReadLine()!);
+for(int i = 1; i <=n; i++){
+    Console.Write($"{Math.Pow(i, 3)} ");
 }
