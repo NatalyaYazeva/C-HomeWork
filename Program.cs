@@ -201,8 +201,8 @@ Console.WriteLine($"Сумма цифр в числе {num} равно {SumNums(
 
 //Задача 3. Напишите программу, которая задаёт массив из 8 элементов и выводит их на экран. (числа берете любые)
 
-int[] Array = GetArray(8);
-Console.WriteLine($"[{String.Join(",", Array)}]");
+/*int[] Array = GetArray(8);
+Console.WriteLine($"[{String.Join(",", Array)}]");*/
 
 //---------------Методы---------------
 //Задача 1
@@ -224,10 +224,108 @@ Console.WriteLine($"[{String.Join(",", Array)}]");
 }*/
 //залача 3
 
-int[] GetArray(int size){
+/*int[] GetArray(int size){
     int[] myArray = new int[size];
     for(int i = 0; i < size; i++){
         myArray[i] = new Random().Next();
     }
+    return myArray;
+}*/
+
+//-----------------Домашнее задание №5-------------------------------
+
+/*Задача 34: Задайте массив заполненный случайными положительными трёхзначными числами.
+Напишите программу, которая покажет количество чётных чисел в массиве.*/
+
+/* int[] array = GetArray(10, 1, 1000);
+Console.WriteLine($"[{String.Join(",", array)}]");
+Console.WriteLine($"Количество четных чисел равно {CountElements(array)}");*/
+
+//Задача 36: Задайте одномерный массив, заполненный случайными числами. Найдите сумму элементов, стоящих на нечётных индексах.
+
+/*Console.WriteLine("Задача 36");
+int[] array = GetArray(10, 1, 101);
+Console.WriteLine($"[{String.Join(",", array)}]");
+Console.WriteLine($"Сумма элементов нечетных индексов {SumElIndex(array)}");*/
+
+//Задача 37: Найдите произведение пар чисел в одномерном массиве. Парой считаем первый и последний элемент, второй и предпоследний и т.д.
+//Результат запишите в новом массиве.
+
+Console.WriteLine("Задача 37");
+int[] array = GetArray(10, 1, 100);
+Console.WriteLine($"[{String.Join(",", array)}]");
+if (array.Length % 2 ==0)
+{
+    int [] myArray = GetNewArray1 (array);
+    Console.WriteLine($"[{String.Join(",", myArray)}]");
+}
+else
+{
+    int [] myArray = GetNewArray2 (array);
+    Console.WriteLine($"[{String.Join(",", myArray)}]");
+}
+
+
+
+//---------------Методы---------------
+int[] GetArray (int size, int minValue, int maxValue){
+    int[] res = new int [size];
+    for(int i=0; i < size; i++){
+        res[i] = new Random().Next(minValue, maxValue+1);
+    }
+    return res;
+}
+
+int CountElements(int[] array)
+{   int count = 0;
+    foreach (int el in array)
+    {
+        if(el%2 == 0){
+        count++;
+        }
+    } return count;
+}
+
+int SumElIndex(int[] array)
+{   int index = 0;
+    int sum = 0;
+    foreach (int el in array)
+    {
+        if(index%2 > 0){
+        sum +=el;
+        }
+        index++;
+    } return sum;
+}
+
+
+int[] GetNewArray1 (int[] array){
+    int index = 0;
+    int N = array.Length;
+    int[] myArray = new int[N/2];
+    for(int i = 0; i <= N/2-1; i++)
+    {
+        myArray[index] = array[index]*array [N-index-1];
+        index++;
+    } 
+    return myArray;
+}
+
+int[] GetNewArray2 (int[] array){
+    int index = 0;
+    int N = array.Length;
+    int[] myArray = new int[N/2+1];
+    for(int i = 0; i <= N/2; i++)
+    {
+        if (i < N/2)
+        {
+            myArray[index] = array[index]*array [N-index-1];
+            index++;
+        }
+        if (i == N/2)
+        {
+            myArray[index] = array[index];
+        }
+    } 
     return myArray;
 }
