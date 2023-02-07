@@ -251,7 +251,7 @@ Console.WriteLine($"Сумма элементов нечетных индекс�
 //Задача 37: Найдите произведение пар чисел в одномерном массиве. Парой считаем первый и последний элемент, второй и предпоследний и т.д.
 //Результат запишите в новом массиве.
 
-Console.WriteLine("Задача 37");
+/*Console.WriteLine("Задача 37");
 int[] array = GetArray(10, 1, 100);
 Console.WriteLine($"[{String.Join(",", array)}]");
 if (array.Length % 2 ==0)
@@ -263,12 +263,12 @@ else
 {
     int [] myArray = GetNewArray2 (array);
     Console.WriteLine($"[{String.Join(",", myArray)}]");
-}
+}*/
 
 
 
 //---------------Методы---------------
-int[] GetArray (int size, int minValue, int maxValue){
+/*int[] GetArray (int size, int minValue, int maxValue){
     int[] res = new int [size];
     for(int i=0; i < size; i++){
         res[i] = new Random().Next(minValue, maxValue+1);
@@ -328,4 +328,68 @@ int[] GetNewArray2 (int[] array){
         }
     } 
     return myArray;
+}*/
+
+//---------------------------Домашнее задание №6--------------------------------------
+
+
+// Задача 41: Пользователь вводит с клавиатуры M чисел. Посчитайте, сколько чисел строго больше 0 ввёл пользователь.
+/*Console.Write($"Введите через пробел несколько чисел: ");
+String Array = Console.ReadLine()!;
+string[] numS = Array.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+Console.WriteLine($"Из {CountNums(numS)} чисел - {CountNums2(numS)} положительных");
+
+//--------Методы---------------
+
+int CountNums(string[] num){
+    int count = num.Length;
+    return count;
+}
+
+int CountNums2(string[] num)
+{   int count = 0;
+    for (int i = 0; i < num.Length; i++)
+    {
+        if (int.Parse(num [i]) > 0){
+        count++;
+        }
+    } return count;
+}*/
+
+
+// Задача 43: Написать программу, которая на вход принимает массив из любого количества элементов (не менее 6)в промежутке от 0 до 100,
+// а на выходе выводит этот же массив, но отсортированный по возрастанию(от меньшего числа к большему).
+Console.Write("Введи количество элементов массива (не менее 6): ");
+int size = int.Parse(Console.ReadLine()!);
+int[] array = GetArray(size, 0, 101);
+Console.WriteLine($"[{String.Join(",", array)}]");
+SelectionSort(array);
+Console.WriteLine($"[{String.Join(",", array)}]");
+
+//--------Методы---------------
+
+int[] GetArray (int size, int minValue, int maxValue){
+    int[] res = new int [size];
+    for(int i=0; i < size; i++)
+    {
+        res[i] = new Random().Next(minValue, maxValue+1);
+    }
+    return res;
+}
+
+
+void SelectionSort (int[] array)
+{
+    for (int i = 0; i < array.Length - 1; i++)
+    {
+        int minPosition = i;
+
+        for (int j = i + 1; j < array.Length; j++)
+        {
+            if (array[j] < array [minPosition])  minPosition = j;
+        }
+        int temporary = array[i];
+        array[i] = array[minPosition];
+        array[minPosition] = temporary;
+    }
 }
