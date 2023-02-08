@@ -359,16 +359,16 @@ int CountNums2(string[] num)
 
 // Задача 43: Написать программу, которая на вход принимает массив из любого количества элементов (не менее 6)в промежутке от 0 до 100,
 // а на выходе выводит этот же массив, но отсортированный по возрастанию(от меньшего числа к большему).
-Console.Write("Введи количество элементов массива (не менее 6): ");
+/*Console.Write("Введи количество элементов массива (не менее 6): ");
 int size = int.Parse(Console.ReadLine()!);
 int[] array = GetArray(size, 0, 101);
 Console.WriteLine($"[{String.Join(",", array)}]");
 SelectionSort(array);
-Console.WriteLine($"[{String.Join(",", array)}]");
+Console.WriteLine($"[{String.Join(",", array)}]");*/
 
 //--------Методы---------------
 
-int[] GetArray (int size, int minValue, int maxValue){
+/*int[] GetArray (int size, int minValue, int maxValue){
     int[] res = new int [size];
     for(int i=0; i < size; i++)
     {
@@ -392,4 +392,143 @@ void SelectionSort (int[] array)
         array[i] = array[minPosition];
         array[minPosition] = temporary;
     }
+}*/
+
+//-----------------------------Домашнее задание №7--------------------------------------------
+
+// Задача 47. Задайте двумерный массив размером m×n, заполненный случайными вещественными числами.
+/*Console.WriteLine("Введи количество строк: ");
+int rows = int.Parse(Console.ReadLine()!);
+Console.WriteLine("Введи количество столбцов: ");
+int columns = int.Parse(Console.ReadLine()!);
+
+double[,] array = GetArray(rows, columns, 0, 10);
+PrintArray(array);
+
+//----------------Методы--------------
+double[,] GetArray(int m, int n, int minValue, int maxValue){
+    double[,] result = new double[m,n];
+    for (int i = 0; i < m; i++){
+        for (int j = 0; j < n; j++){
+            result[i,j] = Math.Round(new Random().NextDouble(),2);
+        }
+    }
+    return result;
+}
+
+void PrintArray(double[,] array){
+    for (int i = 0; i < array.GetLength(0); i++){
+        for (int j = 0; j < array.GetLength(1);j++){
+            Console.Write($"{array[i,j]} ");
+        }
+        Console.WriteLine();
+    }
+}*/
+
+//Задача 50. Напишите программу, которая на вход принимает число, проверяя есть ли такое число в двумерном массиве
+// и возвращает сообщение о том, что оно найдено или же указание, что такого элемента нет.
+
+/*Console.WriteLine("Введи количество строк: ");
+int rows = int.Parse(Console.ReadLine()!);
+Console.WriteLine("Введи количество столбцов: ");
+int columns = int.Parse(Console.ReadLine()!);
+
+int[,] array = GetArray(rows, columns, 0, 10);
+PrintArray(array);
+
+Console.WriteLine("Введите число: ");
+int A = int.Parse(Console.ReadLine()!);
+
+if(FindElement(array, A))
+{
+    Console.WriteLine("данный элемент в массиве есть");
+}
+else{
+    Console.WriteLine("данного элемента в массиве нет");
+}
+
+//----------------Методы--------------
+int[,] GetArray(int m, int n, int minValue, int maxValue){
+    int[,] result = new int[m,n];
+    for (int i = 0; i < m; i++){
+        for (int j = 0; j < n; j++){
+            result[i,j] = new Random().Next(minValue, maxValue + 1);
+        }
+    }
+    return result;
+}
+
+void PrintArray(int[,] array){
+    for (int i = 0; i < array.GetLength(0); i++){
+        for (int j = 0; j < array.GetLength(1);j++){
+            Console.Write($"{array[i,j]} ");
+        }
+        Console.WriteLine();
+    }
+}
+
+bool FindElement (int[,] array, int A){
+    for (int i = 0; i < array.GetLength(0); i++){
+        for (int j = 0; j < array.GetLength(1); j++){
+            if(array[i,j]==A){
+                return true;
+            }
+        }
+    } return false;
+}*/
+
+//Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
+
+Console.WriteLine("Введи количество строк: ");
+int rows = int.Parse(Console.ReadLine()!);
+Console.WriteLine("Введи количество столбцов: ");
+int columns = int.Parse(Console.ReadLine()!);
+
+int[,] array = GetArray(rows, columns, 0, 10);
+PrintArray(array);
+
+double[] myArray = SelectArray (array);
+
+double[] myArray2 = new double [myArray.Length];
+for (int i =0; i < myArray.Length; i++){
+    myArray2 [i] = Math.Round (myArray [i], 2);
+}
+
+Console.WriteLine($"[{String.Join("; ", myArray2)}]");
+
+//----------------Методы--------------
+int[,] GetArray(int m, int n, int minValue, int maxValue){
+    int[,] result = new int[m,n];
+    for (int i = 0; i < m; i++){
+        for (int j = 0; j < n; j++){
+            result[i,j] = new Random().Next(minValue, maxValue + 1);
+        }
+    }
+    return result;
+}
+
+void PrintArray(int[,] array){
+    for (int i = 0; i < array.GetLength(0); i++){
+        for (int j = 0; j < array.GetLength(1);j++){
+            Console.Write($"{array[i,j]} ");
+        }
+        Console.WriteLine();
+    }
+}
+
+double [] SelectArray(int[,] array){
+    int n = array.GetLength(0);
+    int m = array.GetLength(1);
+    double[] myArray = new double [m];
+    for (int j = 0; j < m; j++)
+    {
+        int i = 0;
+        double sum = 0;
+        while (i < n){
+        sum += array[i,j];
+        myArray[j] = sum/n;
+        i++;
+        }
+    }
+    return myArray;
 }
