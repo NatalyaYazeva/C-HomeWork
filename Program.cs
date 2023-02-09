@@ -479,7 +479,7 @@ bool FindElement (int[,] array, int A){
 
 //Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
 
-Console.WriteLine("Введи количество строк: ");
+/*Console.WriteLine("Введи количество строк: ");
 int rows = int.Parse(Console.ReadLine()!);
 Console.WriteLine("Введи количество столбцов: ");
 int columns = int.Parse(Console.ReadLine()!);
@@ -531,4 +531,186 @@ double [] SelectArray(int[,] array){
         }
     }
     return myArray;
+}*/
+
+
+//---------------------Домашнее задание №8-------------------------
+
+//Задача 54: Задайте двумерный массив. Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.
+
+/*Console.WriteLine("Введи количество строк: ");
+int rows = int.Parse(Console.ReadLine()!);
+Console.WriteLine("Введи количество столбцов: ");
+int columns = int.Parse(Console.ReadLine()!);
+
+int[,] array = GetArray(rows, columns, 0, 10);
+PrintArray(array);
+
+Console.WriteLine("Новый массив");
+
+int [,] myArray = GetResultArray (array);
+PrintArray(myArray);
+
+
+//----------------Методы--------------
+int[,] GetArray(int m, int n, int minValue, int maxValue){
+    int[,] result = new int[m,n];
+    for (int i = 0; i < m; i++){
+        for (int j = 0; j < n; j++){
+            result[i,j] = new Random().Next(minValue, maxValue + 1);
+        }
+    }
+    return result;
+}
+
+void PrintArray(int[,] array){
+    for (int i = 0; i < array.GetLength(0); i++){
+        for (int j = 0; j < array.GetLength(1);j++){
+            Console.Write($"{array[i,j]} ");
+        }
+        Console.WriteLine();
+    }
+}
+
+int[,] GetResultArray (int[,] array){
+    int[,] resultArray = new int[array.GetLength(0), array.GetLength(1)];
+    int rows = 0;
+    int column = 0;
+    for (int i = 0; i < array.GetLength(0);i++){
+        for (int j = 0; j < array.GetLength(1); j++){
+            int maxPosition = j;
+            for (int K = j + 1; K < array.GetLength(1); K++)
+            {
+                if (array[i,K] > array[i,j])  maxPosition = K;
+            }
+            int temporary = array[i,j];
+            array[i,j] = array[i,maxPosition];
+            array [i,maxPosition] = temporary;
+            resultArray [rows,column] = array [i,j];
+            column++;
+            }
+        column = 0;
+        rows++;
+    } return resultArray;
+}*/
+
+//Задача 56: Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
+
+
+/*Console.WriteLine("Введи количество строк: ");
+int rows = int.Parse(Console.ReadLine()!);
+Console.WriteLine("Введи количество столбцов: ");
+int columns = int.Parse(Console.ReadLine()!);
+
+int[,] array = GetArray(rows, columns, 0, 10);
+PrintArray(array);
+
+int[] myArray = GetResultArray (array);
+
+Console.WriteLine($"Сумма элементов по каждой строке = [{String.Join("; ", myArray)}]");
+int find = FindMin(myArray);
+Console.WriteLine($"Наименьшая сумма - {find}");
+
+int index = 0;
+while (index < myArray.Length){
+    if(myArray[index] == find){
+        Console.WriteLine($"Номер строки с наименьшей суммой - {index+1}");
+        break;
+    }
+    index++;
+}
+
+
+//----------------Методы--------------
+int[,] GetArray(int m, int n, int minValue, int maxValue){
+    int[,] result = new int[m,n];
+    for (int i = 0; i < m; i++){
+        for (int j = 0; j < n; j++){
+            result[i,j] = new Random().Next(minValue, maxValue + 1);
+        }
+    }
+    return result;
+}
+
+void PrintArray(int[,] array){
+    for (int i = 0; i < array.GetLength(0); i++){
+        for (int j = 0; j < array.GetLength(1);j++){
+            Console.Write($"{array[i,j]} ");
+        }
+        Console.WriteLine();
+    }
+}
+
+int [] GetResultArray(int[,] array){
+    int[] result = new int [array.GetLength(0)];
+    for (int j = 0; j < array.GetLength(0); j++)
+    {
+        int sum = 0;
+        for (int i = 0; i < array.GetLength(1); i++)
+        {
+            sum += array[j,i];
+        }
+        result[j] = sum;
+    }
+    return result;
+}
+
+int FindMin (int[]array){
+    int Min = array[0];
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i] < Min) Min = array [i];
+    }
+    return Min;
+}*/
+
+//Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
+
+
+int[,] array1 = GetArray(2, 2);
+Console.WriteLine($"Матрица 1:");
+PrintArray(array1);
+
+int[,] array2 = GetArray(2, 2);
+Console.WriteLine($"Матрица 2:");
+PrintArray(array2);
+
+int[,] myArray = GetNewArray (array1, array2);
+
+Console.WriteLine($"Матрица 2:");
+
+PrintArray(myArray);
+
+
+
+//----------------Методы--------------
+int[,] GetArray(int n, int m){
+    int[,] array = new int[n, m];
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < m; j++){
+            array[i, j] = new Random().Next(1, 10);
+        }
+    }
+    return array;
+}
+
+void PrintArray(int[,] array){
+    for(int i = 0; i < array.GetLength(0); i++){
+        for(int j = 0; j < array.GetLength(1); j++){
+            Console.Write($"{array[i, j]} ");
+        }
+        Console.WriteLine();
+    }
+}
+
+int[,] GetNewArray (int[,] array1, int[,] array2){
+    int m = array1.GetLength(0);
+    int n = array1.GetLength(1);
+    int[,] result = new int[m,n];
+    for (int i = 0; i < result.GetLength(0); i++){
+        for (int j = 0; j < result.GetLength(1); j++){
+            result[i,j] = array1[i,0]*array2[0,j] + array1[i,1]*array2[1,j];
+        }
+    }
+    return result;
 }
