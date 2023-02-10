@@ -667,7 +667,7 @@ int FindMin (int[]array){
 //Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
 
 
-int[,] array1 = GetArray(2, 2);
+/*int[,] array1 = GetArray(2, 2);
 Console.WriteLine($"Матрица 1:");
 PrintArray(array1);
 
@@ -713,4 +713,54 @@ int[,] GetNewArray (int[,] array1, int[,] array2){
         }
     }
     return result;
+}*/
+
+//-------------------------ДОМАШНЕЕ ЗАДАНИЕ №9-----------------------------
+// Задача 64: Задайте значение N. Напишите программу, которая выведет все натуральные числа в промежутке от N до 1
+
+/*Console.WriteLine("Введи число N: ");
+int N = int.Parse(Console.ReadLine()!);
+
+Console.WriteLine (PrintNumbers(N, 1));
+
+//----------------------Методы------------------------------
+
+string PrintNumbers (int start, int end){
+    if (start == end) return start.ToString();
+    return (start + " " + PrintNumbers(start - 1, end));
+}*/
+
+//Задача 66: Задайте значения M и N. Напишите программу, которая найдёт сумму натуральных элементов в промежутке от M до N.
+/*Console.WriteLine("Введи число N: ");
+int N = int.Parse(Console.ReadLine()!);
+Console.WriteLine("Введи число M: ");
+int M = int.Parse(Console.ReadLine()!);
+
+Console.WriteLine (Sum(N, M));
+
+//----------------------Методы------------------------------
+
+int Sum (int N, int M){
+    if (M == N) return N;
+    return (M + Sum(N,M-1));
+}*/
+
+//Задача 68: Напишите программу вычисления функции Аккермана с помощью рекурсии. Даны два неотрицательных числа m и n.
+
+Console.WriteLine("Введите положительное число N: ");
+int N = int.Parse(Console.ReadLine()!);
+Console.WriteLine("Введите положительное число M: ");
+int M = int.Parse(Console.ReadLine()!);
+
+Console.WriteLine (Akkerman(N, M));
+
+
+int Akkerman (int N, int M)
+{
+    if (N == 0) return M + 1;
+    else
+        if ((N != 0) && (M == 0))
+        return Akkerman (N - 1, 1);
+        else
+            return Akkerman (N - 1, Akkerman (N, M - 1));
 }
